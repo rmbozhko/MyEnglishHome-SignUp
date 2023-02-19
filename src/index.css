@@ -1,0 +1,18 @@
+body {
+  font-family: "Andada Pro";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(96, 230, 84);
+  background: linear-gradient(
+      180deg,
+      rgba(96, 230, 84, 1) 0%,
+      rgba(123, 238, 170, 1) 100%
+    )
+    no-repeat;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
