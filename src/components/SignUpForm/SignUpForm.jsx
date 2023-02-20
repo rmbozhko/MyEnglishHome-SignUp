@@ -1,22 +1,36 @@
 import c from "./SignUpForm.module.css";
+import { useForm } from 'react-hook-form';
 
 export const SignUpForm = () => {
+    const {
+        register,
+        formState: {
+            errors,
+        },
+        handleSubmit,
+    } = useForm();
+
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data));
+    }
+
     return (
         <div className={c.cont}>
             <div className={c.formsName}><h3>Форма реєстрації для навчання</h3></div>
             <div className={c.necesCont}><span className={c.neces}>&#9913;</span> Обов'язково заповніть</div>
             <div className={c.signupform}>
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <span className={c.label}>Ім'я та прізвище студента<span className={c.neces}>&#9913;</span></span>
-                    <div>
-                        <input className={c.name} type="text" placeholder="Ім'я" name="firstname" required></input>
-                        <input className={c.name} type="text" placeholder="Прізвище" name="secondname" required></input>
+                    <div className={c.center}>
+                        <input {...register("firstName", { required: true, maxLength: 20, pattern: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/, })} className={c.name} placeholder="Ім'я" maxLength="20" />
+                        <input {...register("lastName", { required: true, maxLength: 20, pattern: /^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/, })} className={c.name} type="text" placeholder="Прізвище" maxLength="20" />
+                        {(errors?.lastName || errors?.firstName) && <i className="material-icons">&#xe002;</i>}
                     </div>
                     <span className={c.label}>Дата народження студента<span className={c.neces}>&#9913;</span></span>
                     <div>
-                        <input className={c.birth} type="text" placeholder="День" name="day" required></input>
-                        <select id="cars" name="cars" placeholder="Місяць">
-                            <option value="none" disabled selected>Місяць</option>
+                        <input {...register("day", { required: true, pattern: /^(0?[1-9]|[12]\d|3[01])$/, })} className={c.birth} placeholder="День" name="day" />
+                        <select {...register("month", { required: true, validate: (value) => value === "DEFAULT" })} id="cars" name="cars" defaultValue={'DEFAULT'}>
+                            <option value='DEFAULT' hidden>Місяць</option>
                             <option value="january">Січень</option>
                             <option value="february">Лютий</option>
                             <option value="march">Березень</option>
@@ -30,12 +44,15 @@ export const SignUpForm = () => {
                             <option value="november">Листопад</option>
                             <option value="december">Грудень</option>
                         </select>
-                        <input className={c.birth} type="text" placeholder="Рік" name="year" required></input>
+                        <input {...register("year", { required: true, pattern: /^(19[0-8][0-9]|199[0-9]|20[0-9][0-9]|2023)$/ })} className={c.birth} placeholder="Рік" name="year" maxLength="4" minLength="4" />
+                        {(errors?.day || errors?.month || errors?.year) && <i className="material-icons">&#xe002;</i>}
                     </div>
                     <span className={c.label}>Номер телефону студента<span className={c.neces}>&#9913;</span></span>
                     <div>
-                        <input className={c.name} type="text" placeholder="+38_________" name="firstname" required></input>
+                        <input {...register("phone", { required: true, maxLength: 13 })} className={c.tel} type="tel" placeholder="+380123456789" name="phone" maxLength="13" />
+                        {(errors?.phone) && <i className="material-icons">&#xe002;</i>}
                     </div>
+                    <input type="submit" />
                 </form>
             </div>
         </div>

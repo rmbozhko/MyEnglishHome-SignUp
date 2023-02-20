@@ -55,13 +55,15 @@ input:focus {
   outline: none;
 }
 
-.name {
-  width: 28%;
-}
-
-.birth {
+.birth,
+.tel {
   width: 10%;
   text-align: center;
+}
+
+.name,
+.tel {
+  width: 28%;
 }
 
 select {
@@ -69,4 +71,25 @@ select {
   padding: 0;
   color: rgba(0, 0, 0, 0.366);
   text-align: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+i {
+  color: rgba(255, 0, 0, 0.589);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
 }
