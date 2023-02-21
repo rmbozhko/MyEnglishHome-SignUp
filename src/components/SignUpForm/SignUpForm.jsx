@@ -12,15 +12,17 @@ export const SignUpForm = () => {
         },
         handleSubmit,
         watch,
-    } = useForm();
 
+    } = useForm({ mode: 'onChange' });
     const dateOfBirthWatch = watch(['year', 'month', 'day']);
 
     const onSubmit = (data) => {
-
+        alert(JSON.stringify(data))
     };
 
     const [age, setAge] = useState(18);
+    const [ageUnderTw, setAgeUnderTw] = useState(false);
+    const [ageUnderEi, setAgeUnderEi] = useState(false);
     useEffect(() => {
         const day = watch('day');
         const month = watch('month');
@@ -34,7 +36,8 @@ export const SignUpForm = () => {
         if (today < dobnow) {
             setAge(prev => prev - 1);
         };
-        console.log(age);
+        age < 13 ? setAgeUnderTw(true) : setAgeUnderTw(false);
+        age < 18 ? setAgeUnderEi(true) : setAgeUnderEi(false);
     }, [dateOfBirthWatch]);
 
     return (
@@ -70,11 +73,19 @@ export const SignUpForm = () => {
                         <input {...register("year", { required: true, pattern: /^(19[0-8][0-9]|199[0-9]|20[0-9][0-9]|2023)$/ })} className={c.birth} placeholder="Рік" name="year" maxLength="4" />
                         {(errors?.day || errors?.month || errors?.year) && <i className="material-icons">&#xe002;</i>}
                     </div>
-                    <span className={c.label}>Номер телефону студента<span className={c.neces}>&#9913;</span></span>
+                    <span className={c.label}>Номер телефону студента{!ageUnderTw ? <span className={c.neces}>&#9913;</span> : null}</span>
                     <div>
-                        <input {...register("phone", { required: true, pattern: /^\+380[0-9]{9}/i })} className={c.tel} type="tel" placeholder="+380123456789" name="phone" maxLength="13" />
+                        <input {...register("phone", { required: !ageUnderTw, pattern: /^\+380[0-9]{9}/i })} className={c.tel} type="tel" placeholder="+380123456789" name="phone" maxLength="13" />
                         {(errors?.phone) && <i className="material-icons">&#xe002;</i>}
                     </div>
+                </div>
+                <div className={c.check}>
+                    <input className={c.customCheckbox} name="contract" type="checkbox" {...register("contract", { required: true })} />
+                    <label for="contract">Я{ageUnderEi ? ', як представник, ' : null} погоджуюсь з умовами договору про навчання в студії “My English Home”</label>
+                </div>
+                <div className={c.check}>
+                    <input className={c.customCheckbox} name="behavior" type="checkbox" {...register("behavior", { required: true })} />
+                    <label for="behavior">Я{ageUnderEi ? ', як представник, ' : null} погоджуюсь з правилами поведінки в студії “My English Home”</label>
                 </div>
                 <input type="submit" />
             </form>
