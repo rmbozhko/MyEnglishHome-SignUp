@@ -1,18 +1,41 @@
 import c from "./SignUpForm.module.css";
 import { useForm } from 'react-hook-form';
+import { useState, useEffect } from "react";
 
 export const SignUpForm = () => {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const {
         register,
         formState: {
             errors,
         },
         handleSubmit,
+        watch,
     } = useForm();
 
+    const dateOfBirthWatch = watch(['year', 'month', 'day']);
+
     const onSubmit = (data) => {
-        alert(JSON.stringify(data));
-    }
+
+    };
+
+    const [age, setAge] = useState(18);
+    useEffect(() => {
+        const day = watch('day');
+        const month = watch('month');
+        const year = watch('year');
+        if (day === '' || month === '' || year === '') {
+            return;
+        }
+        const dob = new Date(year, month, day);
+        const dobnow = new Date(today.getFullYear(), dob.getMonth() - 1, dob.getDate());
+        setAge(today.getFullYear() - dob.getFullYear());
+        if (today < dobnow) {
+            setAge(prev => prev - 1);
+        };
+        console.log(age);
+    }, [dateOfBirthWatch]);
 
     return (
         <div className={c.cont}>
