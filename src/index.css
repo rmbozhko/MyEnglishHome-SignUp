@@ -1,5 +1,9 @@
+@font-face {
+  font-family: "Blogger Sans";
+  src: url("../src/fonts/Blogger_Sans.otf");
+}
+
 body {
-  font-family: "Andada Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(96, 230, 84);
@@ -12,6 +16,7 @@ body {
 }
 
 * {
+  font-family: Blogger Sans;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

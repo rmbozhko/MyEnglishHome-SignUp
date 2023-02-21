@@ -1,9 +1,10 @@
-import c from "./Header.module.css"
+import c from "./Header.module.css";
+import logo from "../../images/logo.png"
 
 export const Header = () => {
     return (
         <header className={c.header}>
-            <h1><div>MY</div><div className={c.engCont}><span className={c.eng}>ENGLISH</span></div><div>HOME</div></h1>
+            <img className={c.logo} src={logo} alt="logo"></img>
         </header>
     )
 }
