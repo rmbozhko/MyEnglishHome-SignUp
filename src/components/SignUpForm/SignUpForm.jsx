@@ -80,14 +80,16 @@ export const SignUpForm = () => {
                     </div>
                 </div>
                 <div className={c.check}>
-                    <input className={c.customCheckbox} name="contract" type="checkbox" {...register("contract", { required: true })} />
+                    <input className={c.customCheckbox} id="contract" name="contract" type="checkbox" {...register("contract", { required: true })} />
                     <label for="contract">Я{ageUnderEi ? ', як представник, ' : null} погоджуюсь з умовами договору про навчання в студії “My English Home”</label>
                 </div>
                 <div className={c.check}>
-                    <input className={c.customCheckbox} name="behavior" type="checkbox" {...register("behavior", { required: true })} />
+                    <input className={c.customCheckbox} id="behavior" name="behavior" type="checkbox" {...register("behavior", { required: true })} />
                     <label for="behavior">Я{ageUnderEi ? ', як представник, ' : null} погоджуюсь з правилами поведінки в студії “My English Home”</label>
                 </div>
-                <input type="submit" />
+                <div className={c.formsName}>
+                    <input className={c.regButton} type="submit" value="ЗАРЕЄСТРУВАТИСЬ" />
+                </div>
             </form>
         </div>
     )

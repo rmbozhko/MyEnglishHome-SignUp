@@ -3,6 +3,11 @@
   src: url("../src/fonts/Blogger_Sans.otf");
 }
 
+@font-face {
+  font-family: "Blogger Sans Bold";
+  src: url("../src/fonts/Blogger_Sans_Bold.otf");
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
