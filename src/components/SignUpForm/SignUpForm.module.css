@@ -3,7 +3,7 @@
 }
 
 h3 {
-  font-size: 1.5vw;
+  font-size: 2rem;
   font-weight: 500;
 }
 
@@ -16,13 +16,14 @@ h3 {
 
 .neces {
   color: red;
-  font-size: 1.3vw;
+  font-size: 1.6rem;
 }
 
 .necesCont {
-  font-size: 0.9vw;
-  color: #525751c9;
+  font-size: 1.4rem;
+  color: black;
   padding: 1% 5%;
+  opacity: 55%;
 }
 
 .signupform {
@@ -68,8 +69,14 @@ input:focus {
 select {
   width: 20%;
   padding: 0;
-  color: rgba(0, 0, 0, 0.366);
   text-align: center;
+}
+
+option {
+  color: rgba(0, 0, 0, 0.366);
+}
+option:first-child {
+  color: rgba(0, 0, 0, 0.366);
 }
 
 .center {

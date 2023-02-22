@@ -2,9 +2,10 @@ import c from "./SignUpForm.module.css";
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from "react";
 
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
 export const SignUpForm = () => {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const {
         register,
         formState: {
@@ -38,7 +39,7 @@ export const SignUpForm = () => {
         };
         age < 13 ? setAgeUnderTw(true) : setAgeUnderTw(false);
         age < 18 ? setAgeUnderEi(true) : setAgeUnderEi(false);
-    }, [dateOfBirthWatch]);
+    }, [dateOfBirthWatch, age, watch]);
 
     return (
         <div className={c.cont}>

@@ -8,6 +8,11 @@
   src: url("../src/fonts/Blogger_Sans_Bold.otf");
 }
 
+@font-face {
+  font-family: "Aqum";
+  src: url("../src/fonts/Aqum.otf");
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
