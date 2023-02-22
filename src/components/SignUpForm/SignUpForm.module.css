@@ -21,20 +21,16 @@ h3 {
 
 .necesCont {
   font-size: 1.4rem;
-  color: black;
+  color: rgba(0, 0, 0, 0.555);
   padding: 1% 5%;
-  opacity: 55%;
+  border-bottom: 3px dashed black;
 }
 
 .signupform {
-  border-top: 3px dashed black;
   border-bottom: 3px dashed black;
   margin: 1vw 0;
   padding: 2% 5%;
-}
-
-.label {
-  font-size: 1.2vw;
+  font-size: 1.5rem;
 }
 
 input,
@@ -70,12 +66,6 @@ select {
   width: 20%;
   padding: 0;
   text-align: center;
-}
-
-option {
-  color: rgba(0, 0, 0, 0.366);
-}
-option:first-child {
   color: rgba(0, 0, 0, 0.366);
 }
 
@@ -155,4 +145,16 @@ input[type="number"]:focus {
   border-radius: 24px;
   background-color: white;
   cursor: pointer;
+}
+
+.strongUnderEighteen {
+  font-size: 1.5rem;
+}
+
+li {
+  margin-left: 1.5rem;
+}
+
+ul {
+  list-style-type: circle;
 }

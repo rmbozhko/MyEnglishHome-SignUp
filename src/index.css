@@ -23,6 +23,7 @@ body {
       rgba(123, 238, 170, 1) 100%
     )
     no-repeat;
+  background-attachment: fixed;
 }
 
 * {
