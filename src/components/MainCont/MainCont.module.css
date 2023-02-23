@@ -144,6 +144,11 @@ input[type="number"]:focus {
   padding: 2.5rem;
   border-radius: 24px;
   background-color: white;
+}
+
+.regButtonActive {
+  border: 9px solid #3ecf30;
+  color: #3ecf30;
   cursor: pointer;
 }
 
@@ -157,4 +162,49 @@ li {
 
 ul {
   list-style-type: circle;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+}
+
+.customRadio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.customRadio + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.customRadio + label::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #000000;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.customRadio:checked + label::before {
+  border-color: #000000;
+  background-color: #94e48c;
+  background-image: url("../../images/radio.png");
+}
+
+.hypertext:link,
+.hypertext:visited,
+.hypertext {
+  color: #000000;
 }

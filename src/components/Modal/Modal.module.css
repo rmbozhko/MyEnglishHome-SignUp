@@ -1,0 +1,36 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.623);
+}
+
+.success,
+.congrats {
+  color: #3ecf30;
+  text-shadow: #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px,
+    #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px;
+  font-family: "Blogger Sans Bold";
+}
+
+.success {
+  font-size: 4rem;
+}
+
+.congrats {
+  font-size: 5rem;
+}
+
+.image {
+  width: 20vw;
+  height: auto;
+}
