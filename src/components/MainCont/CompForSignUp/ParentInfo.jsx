@@ -2,7 +2,7 @@ import { NameInput } from "./NameInput";
 
 export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
     return (
-        < div className={c.signupform} >
+        <div className={c.signupform}>
             {ageUnderEi ? <strong className={c.strongUnderEighteen} > Студент - неповнолітній, внесіть, будь ласка, інформацію про його представника.</strong > : null
             }
             <p>Студент та представник можуть переглядати:</p>
@@ -16,16 +16,16 @@ export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
 
             <span>Рік народження представника<span className={c.neces}>&#9913;</span></span>
             <div>
-                <input {...register("yearParent", { required: ageUnderEi || watch('payment') === 'parent', min: 1900, max: now.getFullYear() - 18 })} className={c.birth} placeholder="Рік" name="yearParent" maxLength="4" />
+                <input {...register("yearParent", { required: ageUnderEi || watch('payment') === 'parent', min: { value: now.getFullYear() - 100, message: `Рік народження може бути від ${now.getFullYear() - 100} до ${now.getFullYear() - 18}` }, max: { value: now.getFullYear() - 18, message: `Рік народження може бути від ${now.getFullYear() - 100} до ${now.getFullYear() - 18}` } })} className={c.birth} placeholder="Рік" name="yearParent" maxLength="4" />
                 {(errors?.yearParent) && <i className="material-icons">&#xe002;</i>}
             </div>
 
 
             <span>Номер телефону представника<span className={c.neces}>&#9913;</span></span>
             <div>
-                <input {...register("phoneParent", { required: ageUnderEi || watch('payment') === 'parent', pattern: /^\+380[0-9]{9}/i })} className={c.tel} type="tel" placeholder="+380123456789" name="phoneParent" maxLength="13" />
+                <input {...register("phoneParent", { required: ageUnderEi || watch('payment') === 'parent', pattern: { value: /^\+380[0-9]{9}/i, message: "Поле має бути у форматі: +380XXXXXXXXX" } })} className={c.tel} type="tel" placeholder="+380123456789" name="phoneParent" maxLength="13" />
                 {(errors?.phoneParent) && <i className="material-icons">&#xe002;</i>}
             </div>
-        </div >
+        </div>
     )
 }

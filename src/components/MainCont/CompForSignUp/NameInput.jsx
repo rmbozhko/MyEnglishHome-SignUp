@@ -7,9 +7,9 @@ export const NameInput = ({ register, title, firstName, secondName, errors, req,
 
 
             <div className={c.center}>
-                <input {...register(firstName, { required: req, maxLength: 20, pattern: /^([А-Я]{1}[а-яёієї]{1,23}|[A-Z]{1}[a-z]{1,23})$/, })} className={c.name} placeholder="Ім'я" maxLength="20" />
-                <input {...register(secondName, { required: req, maxLength: 20, pattern: /^([А-Я]{1}[а-яёієї]{1,23}|[A-Z]{1}[a-z]{1,23})$/, })} className={c.name} type="text" placeholder="Прізвище" maxLength="20" />
-                {(errors?.[secondName] || errors?.[firstName]) && <i className="material-icons">&#xe002;</i>}
+                <input {...register(firstName, { required: { value: req, message: "Заповніть поле." }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Можна використовувати лише українські/російські букви, знаки тире та апостроф." }, })} className={c.name} placeholder="Ім'я" maxLength="30" />
+                <input {...register(secondName, { required: { value: req, message: "Заповніть поле." }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Можна використовувати лише українські/російські букви, знаки тире та апостроф." }, })} className={c.name} type="text" placeholder="Прізвище" maxLength="30" />
+                {(errors?.[secondName] || errors?.[firstName]) && <><i className="material-icons">&#xe002;</i><span>{errors?.firstName?.message || errors?.secondName?.message}</span></>}
             </div>
         </>
     )

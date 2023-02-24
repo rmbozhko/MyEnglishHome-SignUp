@@ -5,7 +5,7 @@ export const Payment = ({ c, errors, register }) => {
             <div className={c.radio}>
                 <input
                     className={c.customRadio}
-                    {...register("payment", { required: true })}
+                    {...register("payment", { required: "Заповніть поле." })}
                     type="radio"
                     value="student"
                     id="std"
@@ -15,7 +15,7 @@ export const Payment = ({ c, errors, register }) => {
             <div className={c.radio}>
                 <input
                     className={c.customRadio}
-                    {...register("payment", { required: true })}
+                    {...register("payment", { required: "Заповніть поле." })}
                     type="radio"
                     value="parent"
                     id="prnt"

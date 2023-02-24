@@ -150,6 +150,7 @@ input[type="number"]:focus {
   border: 9px solid #3ecf30;
   color: #3ecf30;
   cursor: pointer;
+  filter: drop-shadow(0px 8px 3px rgba(0, 0, 0, 0.288));
 }
 
 .strongUnderEighteen {
