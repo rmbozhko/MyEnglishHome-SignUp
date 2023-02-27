@@ -52,13 +52,19 @@ input:focus {
 }
 
 .birth,
-.tel {
+.tel,
+.bitrhError {
   width: 10%;
+}
+
+.birth,
+.tel {
   text-align: center;
 }
 
 .name,
-.tel {
+.tel,
+.nameError {
   width: 28%;
 }
 
@@ -208,4 +214,19 @@ ul {
 .hypertext:visited,
 .hypertext {
   color: #000000;
+}
+
+.inputError {
+  border: 1px solid #c22222;
+  background-color: #c2222226;
+}
+
+.error {
+  margin: 0 3% 2% 0;
+  font-size: smaller;
+  color: #c22222;
+}
+
+.error i {
+  font-size: smaller;
 }

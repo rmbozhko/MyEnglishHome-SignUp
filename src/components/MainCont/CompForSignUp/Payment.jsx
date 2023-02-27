@@ -5,7 +5,7 @@ export const Payment = ({ c, errors, register }) => {
             <div className={c.radio}>
                 <input
                     className={c.customRadio}
-                    {...register("payment", { required: "Заповніть поле." })}
+                    {...register("payment", { required: "Заповніть поле" })}
                     type="radio"
                     value="student"
                     id="std"
@@ -15,13 +15,14 @@ export const Payment = ({ c, errors, register }) => {
             <div className={c.radio}>
                 <input
                     className={c.customRadio}
-                    {...register("payment", { required: "Заповніть поле." })}
+                    {...register("payment", { required: "Заповніть поле" })}
                     type="radio"
                     value="parent"
                     id="prnt"
                 />
                 <label htmlFor="prnt">Представник студента</label>
             </div>
+            {errors?.payment ? <div className={`${c.error} + ' ' + ${c.nameError}`}><><i className="material-icons">&#xe002;</i><span>{errors?.payment?.message}</span></></div> : null}
         </div>
     )
 }

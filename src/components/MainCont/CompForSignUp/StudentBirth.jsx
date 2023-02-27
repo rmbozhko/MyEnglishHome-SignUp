@@ -1,12 +1,12 @@
-export const StudentBirth = ({ register, c, watch, errors, now }) => {
+export const StudentBirth = ({ isValideDate, register, c, watch, errors, now }) => {
     return (
         <>
             <span>Дата народження студента<span className={c.neces}>&#9913;</span></span>
             <div>
-                <input {...register("day", { required: "Заповніть поле.", pattern: { value: /^(0?[1-9]|[12]\d|3[01])$/, message: "Поле може містити цифри від 1 до 31" }, })} className={c.birth} placeholder="День" name="day" maxLength="2" />
+                <input {...register("day", { required: "Заповніть поле", pattern: { value: /^(0?[1-9]|[12]\d|3[01])$/, message: "Поле може містити тільки цифри від 1 до 31" }, })} className={`${c.birth} + ' ' + ${errors?.day || !isValideDate ? c.inputError : null}`} placeholder="День" name="day" maxLength="2" />
 
 
-                <select style={{ color: `${watch("month") === "" ? "rgba(0, 0, 0, 0.366)" : "rgba(0, 0, 0)"}` }} {...register("month", { required: "Заповніть поле.", })}>
+                <select className={errors?.month || !isValideDate ? c.inputError : null} style={{ color: `${watch("month") === "" ? "rgba(0, 0, 0, 0.366)" : "rgba(0, 0, 0)"}` }} {...register("month", { required: "Заповніть поле", })}>
                     <option value="" hidden>Місяць</option>
                     <option value="1">Січень</option>
                     <option value="2">Лютий</option>
@@ -23,8 +23,11 @@ export const StudentBirth = ({ register, c, watch, errors, now }) => {
                 </select>
 
 
-                <input {...register("year", { required: "Заповніть поле.", min: { value: now.getFullYear() - 100, message: `Рік народження може бути від ${now.getFullYear() - 100} до ${now.getFullYear() - 5}` }, max: { value: now.getFullYear() - 5, message: `Рік народження може бути від ${now.getFullYear() - 100} до ${now.getFullYear() - 5}` } })} className={c.birth} placeholder="Рік" name="year" maxLength="4" />
-                {(errors?.day || errors?.month || errors?.year) && <i className="material-icons">&#xe002;</i>}
+                <input {...register("year", { required: "Заповніть поле", pattern: { value: /^\d{4}$/, message: `Поле може містити значення від ${now.getFullYear() - 100} до ${now.getFullYear() - 5}` }, min: { value: now.getFullYear() - 100, message: `Поле може містити значення від ${now.getFullYear() - 100} до ${now.getFullYear() - 5}` }, max: { value: now.getFullYear() - 5, message: `Поле може містити значення від ${now.getFullYear() - 100} до ${now.getFullYear() - 5}` } })} className={`${c.birth} + ' ' + ${errors?.year || !isValideDate ? c.inputError : null}`} placeholder="Рік" name="year" maxLength="4" />
+                {errors?.day || errors?.year || !isValideDate ? <div className={c.center}>
+                    <div className={`${c.error} + ' ' + ${c.nameError}`}>{errors?.day && <><i className="material-icons">&#xe002;</i><span>{errors?.day?.message}</span></>} {!isValideDate && <><i className="material-icons">&#xe002;</i><span>Такої дати не існує</span></>}</div>
+                    <div className={`${c.error} + ' ' + ${c.nameError}`}>{errors?.year && <><i className="material-icons">&#xe002;</i><span>{errors?.year?.message}</span></>}</div>
+                </div> : null}
             </div>
         </>
     )

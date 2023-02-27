@@ -7,10 +7,13 @@ export const NameInput = ({ register, title, firstName, secondName, errors, req,
 
 
             <div className={c.center}>
-                <input {...register(firstName, { required: { value: req, message: "Заповніть поле." }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Можна використовувати лише українські/російські букви, знаки тире та апостроф." }, })} className={c.name} placeholder="Ім'я" maxLength="30" />
-                <input {...register(secondName, { required: { value: req, message: "Заповніть поле." }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Можна використовувати лише українські/російські букви, знаки тире та апостроф." }, })} className={c.name} type="text" placeholder="Прізвище" maxLength="30" />
-                {(errors?.[secondName] || errors?.[firstName]) && <><i className="material-icons">&#xe002;</i><span>{errors?.firstName?.message || errors?.secondName?.message}</span></>}
+                <input {...register(firstName, { required: { value: req, message: "Заповніть поле" }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Поле може містити тільки літери, апостроф та тире" }, })} className={`${c.name} + ' ' + ${errors?.[firstName] ? c.inputError : null}`} placeholder="Ім'я" maxLength="30" />
+                <input {...register(secondName, { required: { value: req, message: "Заповніть поле" }, maxLength: 30, pattern: { value: /^(?!.*(?:['-]){2,})(?!['-])(?!.*(?:['-]$))(?:[А-Яа-яЁёІіЇїЄє']+['-]?)*[А-Яа-яЁёІіЇїЄє']+$/, message: "Поле може містити тільки літери, апостроф та тире" }, })} className={`${c.name} + ' ' + ${errors?.[secondName] ? c.inputError : null}`} type="text" placeholder="Прізвище" maxLength="30" />
             </div>
+            {errors?.[firstName] || errors?.[secondName] ? <div className={c.center}>
+                <div className={`${c.error} + ' ' + ${c.nameError}`}>{errors?.[firstName] && <><i className="material-icons">&#xe002;</i><span>{errors?.[firstName]?.message}</span></>}</div>
+                <div className={`${c.error} + ' ' + ${c.nameError}`}>{errors?.[secondName] && <><i className="material-icons">&#xe002;</i><span>{errors?.[secondName]?.message}</span></>}</div>
+            </div> : null}
         </>
     )
 }

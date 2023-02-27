@@ -10,6 +10,7 @@ const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 export const MainCont = ({ setIsModalVisible }) => {
     const {
         register,
+        setValue,
         formState: {
             errors,
         },
@@ -27,15 +28,22 @@ export const MainCont = ({ setIsModalVisible }) => {
     const [age, setAge] = useState(18);
     const [ageUnderTw, setAgeUnderTw] = useState(false);
     const [ageUnderEi, setAgeUnderEi] = useState(false);
+    const [isValideDate, setIsValideDate] = useState(true);
     useEffect(() => {
+        setIsValideDate(true);
         const day = watch('day');
         const month = watch('month');
         const year = watch('year');
         if (day === '' || month === '' || year === '') {
             return;
         }
-        const dob = new Date(year, month, day);
-        const dobnow = new Date(today.getFullYear(), dob.getMonth() - 1, dob.getDate());
+        const dob = new Date(year, month - 1, day);
+        const valid = new Date(year, month - 1, 1);
+        if (dob.getMonth() !== valid.getMonth()) {
+            setIsValideDate(false);
+            // setError("day", { type: "custom", message: "Такої дати не існує" })
+        };
+        const dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
         setAge(today.getFullYear() - dob.getFullYear());
         if (today < dobnow) {
             setAge(prev => prev - 1);
@@ -47,7 +55,7 @@ export const MainCont = ({ setIsModalVisible }) => {
     return (
         <div className={c.cont}>
             <HeaderSign c={c} />
-            <SignUpForm handleSubmit={handleSubmit} onSubmit={onSubmit} c={c} register={register} watch={watch} errors={errors} now={now} ageUnderEi={ageUnderEi} ageUnderTw={ageUnderTw} />
+            <SignUpForm isValideDate={isValideDate} handleSubmit={handleSubmit} onSubmit={onSubmit} c={c} register={register} watch={watch} errors={errors} now={now} ageUnderEi={ageUnderEi} ageUnderTw={ageUnderTw} />
         </div>
     )
 }

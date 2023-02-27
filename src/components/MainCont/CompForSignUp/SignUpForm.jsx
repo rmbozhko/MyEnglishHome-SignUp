@@ -4,11 +4,11 @@ import { ParentInfo } from './ParentInfo';
 import { Payment } from './Payment';
 import { StudentInfo } from './StudentInfo';
 
-export const SignUpForm = ({ handleSubmit, onSubmit, c, register, watch, errors, now, ageUnderEi, ageUnderTw }) => {
+export const SignUpForm = ({ isValideDate, handleSubmit, onSubmit, c, register, watch, errors, now, ageUnderEi, ageUnderTw }) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <StudentInfo c={c} watch={watch} register={register} errors={errors} now={now} ageUnderTw={ageUnderTw} />
-            <Payment c={c} errors={errors} register={register} />
+            <StudentInfo isValideDate={isValideDate} c={c} watch={watch} register={register} errors={errors} now={now} ageUnderTw={ageUnderTw} />
+            {!ageUnderEi ? <Payment c={c} errors={errors} register={register} /> : null}
             {ageUnderEi || watch('payment') === 'parent' ?
                 <ParentInfo c={c} ageUnderEi={ageUnderEi} register={register} errors={errors} watch={watch} now={now} />
                 :
