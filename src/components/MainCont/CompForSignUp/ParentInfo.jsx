@@ -1,4 +1,6 @@
+import { inputChange, onfocusInput } from "../../../function/phoneInput";
 import { NameInput } from "./NameInput";
+
 
 export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
     return (
@@ -23,7 +25,7 @@ export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
 
             <span>Номер телефону представника<span className={c.neces}>&#9913;</span></span>
             <div>
-                <input {...register("phoneParent", { required: { value: ageUnderEi || watch('payment') === 'parent', message: "Заповніть поле" }, pattern: { value: /^\+380[0-9]{9}/i, message: "Поле має бути у форматі: +380XXXXXXXXX" } })} className={`${c.tel} + ' ' + ${errors?.phoneParent ? c.inputError : null}`} type="tel" placeholder="+380123456789" name="phoneParent" maxLength="13" />
+                <input onFocus={onfocusInput} onInput={inputChange} {...register("phoneParent", { required: { value: ageUnderEi || watch('payment') === 'parent', message: "Заповніть поле" }, pattern: { value: /^\+38\s\(0\d{2}\)\s\d{3}\s\d{2}\s\d{2}$/, message: "Поле має бути у форматі: +380XXXXXXXXX" } })} className={`${c.tel} + ' ' + ${errors?.phoneParent ? c.inputError : null}`} type="tel" placeholder="+380XXXXXXXXX" name="phoneParent" maxLength="19" />
                 {errors?.phoneParent && <div className={`${c.error} + ' ' + ${c.nameError}`}><><i className="material-icons">&#xe002;</i><span>{errors?.phoneParent?.message}</span></></div>}
             </div>
         </div>

@@ -10,7 +10,6 @@ const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 export const MainCont = ({ setIsModalVisible }) => {
     const {
         register,
-        setValue,
         formState: {
             errors,
         },
