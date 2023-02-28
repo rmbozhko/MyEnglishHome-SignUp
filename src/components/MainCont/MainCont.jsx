@@ -48,7 +48,7 @@ export const MainCont = ({ setIsModalVisible }) => {
         if (today < dobnow) {
             setAge(prev => prev - 1);
         };
-        age < 13 ? setAgeUnderTw(true) : setAgeUnderTw(false);
+        age < 12 ? setAgeUnderTw(true) : setAgeUnderTw(false);
         age < 18 ? setAgeUnderEi(true) : setAgeUnderEi(false);
     }, [dateOfBirthWatch, age, watch]);
 
