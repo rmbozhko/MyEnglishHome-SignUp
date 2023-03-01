@@ -2,7 +2,7 @@ import { inputChange, onfocusInput } from "../../../function/phoneInput";
 import { NameInput } from "./NameInput";
 
 
-export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
+export const ParentInfo = ({ watch, clearErrors, setError, c, ageUnderEi, register, errors, now }) => {
     return (
         <div className={c.signupform}>
             {ageUnderEi ? <strong className={c.strongUnderEighteen} > Студент - неповнолітній, внесіть, будь ласка, інформацію про його представника.</strong> : null
@@ -14,7 +14,7 @@ export const ParentInfo = ({ c, ageUnderEi, register, errors, watch, now }) => {
                 <li>документи</li>
             </ul>
 
-            <NameInput register={register} title="Ім'я та прізвище представника" firstName="firstNameParent" secondName="secondNameParent" errors={errors} req={ageUnderEi || watch('payment') === 'parent'} c={c} />
+            <NameInput watch={watch} clearErrors={clearErrors} setError={setError} register={register} title="Ім'я та прізвище представника" firstName="firstNameParent" secondName="secondNameParent" errors={errors} req={ageUnderEi || watch('payment') === 'parent'} c={c} />
 
             <span>Рік народження представника<span className={c.neces}>&#9913;</span></span>
             <div>

@@ -7,18 +7,20 @@ import { SignUpForm } from "./CompForSignUp/SignUpForm";
 const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-export const MainCont = ({ setIsModalVisible }) => {
+export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
     const {
         register,
+        setError,
+        clearErrors,
         formState: {
             errors,
+            isValid
         },
         handleSubmit,
         watch,
 
-    } = useForm({ mode: 'onChange' });
+    } = useForm({ mode: 'onBlur' });
     const dateOfBirthWatch = watch(['year', 'month', 'day']);
-
     const onSubmit = (data) => {
         setIsModalVisible(true);
         alert(JSON.stringify(data))
@@ -40,7 +42,6 @@ export const MainCont = ({ setIsModalVisible }) => {
         const valid = new Date(year, month - 1, 1);
         if (dob.getMonth() !== valid.getMonth()) {
             setIsValideDate(false);
-            // setError("day", { type: "custom", message: "Такої дати не існує" })
         };
         const dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
         setAge(today.getFullYear() - dob.getFullYear());
@@ -52,9 +53,9 @@ export const MainCont = ({ setIsModalVisible }) => {
     }, [dateOfBirthWatch, age, watch]);
 
     return (
-        <div className={c.cont}>
+        <div className={isModalVisible ? c.cont + ' ' + c.blur : c.cont}>
             <HeaderSign c={c} />
-            <SignUpForm isValideDate={isValideDate} handleSubmit={handleSubmit} onSubmit={onSubmit} c={c} register={register} watch={watch} errors={errors} now={now} ageUnderEi={ageUnderEi} ageUnderTw={ageUnderTw} />
+            <SignUpForm clearErrors={clearErrors} setError={setError} isValid={isValid} isValideDate={isValideDate} handleSubmit={handleSubmit} onSubmit={onSubmit} c={c} register={register} watch={watch} errors={errors} now={now} ageUnderEi={ageUnderEi} ageUnderTw={ageUnderTw} />
         </div>
     )
 }

@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       {isModalVisible ? <Modal setIsModalVisible={setIsModalVisible} /> : null}
       <Header />
-      <MainCont setIsModalVisible={setIsModalVisible} />
+      <MainCont isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
       <Footer />
     </div>
   );

@@ -1,7 +1,7 @@
-export const Button = ({ c, errors }) => {
+export const Button = ({ isValid, c, errors }) => {
     return (
         <div className={c.formsName}>
-            <input className={Object.keys(errors).length ? c.regButton : c.regButton + ' ' + c.regButtonActive} type="submit" value="ЗАРЕЄСТРУВАТИСЬ" />
+            <input className={!isValid ? c.regButton : c.regButton + ' ' + c.regButtonActive} type="submit" value="ЗАРЕЄСТРУВАТИСЬ" />
         </div>
     )
 }
