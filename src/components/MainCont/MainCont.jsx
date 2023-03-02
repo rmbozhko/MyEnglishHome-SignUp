@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useState, useEffect } from "react";
 import { HeaderSign } from "./CompForSignUp/HeaderSign";
 import { SignUpForm } from "./CompForSignUp/SignUpForm";
+import { objectCreating } from "../../function/objectCreating";
 
 const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -21,9 +22,103 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
 
     } = useForm({ mode: 'onBlur' });
     const dateOfBirthWatch = watch(['year', 'month', 'day']);
-    const onSubmit = (data) => {
+
+    const TOKEN = '123';
+    const AUTH = 'Bearer V';
+    const path = 'http://localhost:8080';
+
+    const representiveCheck = async (representive) => {
+        return await fetch(`${path}/studentrepresentatives?phoneNumber=${representive.phoneNumber}`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'X-Token': TOKEN,
+                'Authorization': AUTH
+            },
+        })
+    }
+
+    const representivePOST = async (representive) => {
+        return await fetch(`${path}/studentrepresentative`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'X-Token': TOKEN,
+                'Authorization': AUTH,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(representive)
+        });
+    }
+
+    const studentCheck = async (student) => {
+        return await fetch(`${path}/students-by?phoneNumber=${student.phoneNumber}`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'X-Token': TOKEN,
+                'Authorization': AUTH
+            }
+        });
+    }
+
+    const studentPOST = async (student) => {
+        return await fetch(`${path}/student`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'X-Token': TOKEN,
+                'Authorization': AUTH,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(student)
+        });
+    }
+
+    const onSubmit = async (data) => {
+        const representive = ageUnderEi || watch('payment') === 'parent' ? objectCreating({ firstName: data.firstNameParent, secondName: data.secondNameParent, year: data.yearParent, phone: data.phoneParent }) : null;;
+        const student = objectCreating({ firstName: data.firstName, secondName: data.secondName, year: data.year, month: data.month, day: data.day, phone: data.phone });
+        if (representive) {
+            const response = await representiveCheck(representive);
+            if (response.status === 404) {
+                const responsePOST = await representivePOST(representive);
+                if (responsePOST?.status === 200) {
+                    student.studentRepresentativeId = responsePOST.data.id;
+                } else {
+                    setIsModalVisible(true);
+                    setTimeout(() => setIsModalVisible(false), 6000);
+                    return;
+                }
+            } else if (response.status !== 200) {
+                setIsModalVisible(true);
+                setTimeout(() => setIsModalVisible(false), 6000);
+                return;
+            }
+        }
+
+        const response = await studentCheck(student);
+        if (response.status === 404) {
+            const responsePOST = await studentPOST(student);
+            if (responsePOST.status !== 200) {
+                setIsModalVisible(true);
+                setTimeout(() => setIsModalVisible(false), 6000);
+                return;
+            }
+        } else if (response.status === 200) {
+            //ERROR: ALREADY REGISTER
+            return;
+        } else {
+            setIsModalVisible(true);
+            setTimeout(() => setIsModalVisible(false), 6000);
+            return;
+        }
+
+        //HANDLER POST REQUEST
+
         setIsModalVisible(true);
-        alert(JSON.stringify(data))
+        setTimeout(() => setIsModalVisible(false), 6000);
+        // REDIRECT
+        return;
     };
 
     const [age, setAge] = useState(18);

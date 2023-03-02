@@ -1,4 +1,4 @@
-export const fetching = () => {
+export const creatingStudentAndRepresentive = () => {
     fetch('http://localhost:8080/companies/123', {
         headers: {
             'accept': 'application/json',
