@@ -15,7 +15,7 @@ export const SignUpForm = ({ clearErrors, setError, isValid, isValideDate, handl
                 null
             }
 
-            <CheckboxInputs c={c} ageUnderEi={ageUnderEi} errors={errors} register={register} />
+            <CheckboxInputs c={c} ageUnderEi={ageUnderEi} register={register} />
             <Button isValid={isValid} c={c} errors={errors} />
         </form>
     )

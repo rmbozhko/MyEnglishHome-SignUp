@@ -26,7 +26,6 @@ export const MainCont = ({ setIsSuccess, isModalVisible, setIsModalVisible }) =>
     const TOKEN = process.env.REACT_APP_TOKEN;
     const AUTH = process.env.REACT_APP_AUTH;
     const PATH = process.env.REACT_APP_PATH;
-    console.log(TOKEN, AUTH, PATH);
     const representiveCheck = async (representive) => {
         return await fetch(`${PATH}/studentrepresentatives?phoneNumber=${representive.phoneNumber}`, {
             method: 'GET',
