@@ -8,7 +8,7 @@ import { objectCreating } from "../../function/objectCreating";
 const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
+export const MainCont = ({ setIsSuccess, isModalVisible, setIsModalVisible }) => {
     const {
         register,
         setError,
@@ -23,23 +23,24 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
     } = useForm({ mode: 'onBlur' });
     const dateOfBirthWatch = watch(['year', 'month', 'day']);
 
-    const TOKEN = '123';
-    const AUTH = 'Bearer V';
-    const path = 'http://localhost:8080';
-
+    const TOKEN = process.env.REACT_APP_TOKEN;
+    const AUTH = process.env.REACT_APP_AUTH;
+    const PATH = process.env.REACT_APP_PATH;
+    console.log(TOKEN, AUTH, PATH);
     const representiveCheck = async (representive) => {
-        return await fetch(`${path}/studentrepresentatives?phoneNumber=${representive.phoneNumber}`, {
+        return await fetch(`${PATH}/studentrepresentatives?phoneNumber=${representive.phoneNumber}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json',
                 'X-Token': TOKEN,
                 'Authorization': AUTH
             },
+            mode: 'cors'
         })
     }
 
     const representivePOST = async (representive) => {
-        return await fetch(`${path}/studentrepresentative`, {
+        return await fetch(`${PATH}/studentrepresentative`, {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
@@ -47,23 +48,25 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
                 'Authorization': AUTH,
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
             body: JSON.stringify(representive)
         });
     }
 
     const studentCheck = async (student) => {
-        return await fetch(`${path}/students-by?phoneNumber=${student.phoneNumber}`, {
+        return await fetch(`${PATH}/students-by?phoneNumber=${student.phoneNumber}`, {
             method: 'GET',
             headers: {
-                'accept': 'application/json',
+                'Accept': 'application/json',
                 'X-Token': TOKEN,
                 'Authorization': AUTH
-            }
+            },
+            mode: 'cors'
         });
     }
 
     const studentPOST = async (student) => {
-        return await fetch(`${path}/student`, {
+        return await fetch(`${PATH}/student`, {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
@@ -71,6 +74,7 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
                 'Authorization': AUTH,
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
             body: JSON.stringify(student)
         });
     }
@@ -85,11 +89,13 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
                 if (responsePOST?.status === 200) {
                     student.studentRepresentativeId = responsePOST.data.id;
                 } else {
+                    setIsSuccess(false);
                     setIsModalVisible(true);
                     setTimeout(() => setIsModalVisible(false), 6000);
                     return;
                 }
             } else if (response.status !== 200) {
+                setIsSuccess(false);
                 setIsModalVisible(true);
                 setTimeout(() => setIsModalVisible(false), 6000);
                 return;
@@ -100,23 +106,27 @@ export const MainCont = ({ isModalVisible, setIsModalVisible }) => {
         if (response.status === 404) {
             const responsePOST = await studentPOST(student);
             if (responsePOST.status !== 200) {
+                setIsSuccess(false);
                 setIsModalVisible(true);
                 setTimeout(() => setIsModalVisible(false), 6000);
                 return;
             }
         } else if (response.status === 200) {
-            //ERROR: ALREADY REGISTER
+            setIsSuccess(false);
+            setError('phone', { type: 'custom', message: 'Даний номер телефону вже зареєстровано. Вкажіть, будь ласка, інший' })
             return;
         } else {
+            setIsSuccess(false);
             setIsModalVisible(true);
             setTimeout(() => setIsModalVisible(false), 6000);
             return;
         }
 
         //HANDLER POST REQUEST
-
+        setIsSuccess(true);
+        setError('phone', { type: 'custom', message: ' Даний номер телефону вже зареєстровано. Вкажіть, будь ласка, інший' })
         setIsModalVisible(true);
-        setTimeout(() => setIsModalVisible(false), 6000);
+
         // REDIRECT
         return;
     };

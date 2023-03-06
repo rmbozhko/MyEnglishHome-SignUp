@@ -7,11 +7,12 @@ import { MainCont } from './components/MainCont/MainCont';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false);
   return (
     <div className="App">
-      {isModalVisible ? <Modal setIsModalVisible={setIsModalVisible} /> : null}
+      {isModalVisible ? <Modal isSuccess={isSuccess} setIsModalVisible={setIsModalVisible} /> : null}
       <Header />
-      <MainCont isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+      <MainCont setIsSuccess={setIsSuccess} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
       <Footer />
     </div>
   );

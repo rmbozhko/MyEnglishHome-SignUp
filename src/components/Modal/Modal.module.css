@@ -1,5 +1,5 @@
 .modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-family: "Blogger Sans Bold";
 }
 
 .success,
@@ -18,18 +19,31 @@
   color: #3ecf30;
   text-shadow: #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px,
     #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px;
-  font-family: "Blogger Sans Bold";
 }
 
-.success {
+.fail,
+.trouble {
+  color: #e5dacb;
+  text-shadow: #c22222 0px 0px 5px, #c22222 0px 0px 5px, #c22222 0px 0px 5px,
+    #c22222 0px 0px 5px, #c22222 0px 0px 5px, #c22222 0px 0px 5px;
+}
+
+.success,
+.fail {
   font-size: 4rem;
 }
 
-.congrats {
+.congrats,
+.trouble {
   font-size: 5rem;
 }
 
 .image {
   width: 20vw;
+  height: auto;
+}
+
+.imageTrouble {
+  width: 13vw;
   height: auto;
 }
