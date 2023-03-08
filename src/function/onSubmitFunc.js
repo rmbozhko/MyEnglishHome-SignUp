@@ -7,6 +7,7 @@ import { studentPOST } from "./studentPOST";
 const TOKEN = process.env.REACT_APP_TOKEN;
 const AUTH = process.env.REACT_APP_AUTH;
 const PATH = process.env.REACT_APP_API_PATH;
+const PATH_HANDLER = process.env.REACT_APP_API_PATH_HANDLER;
 
 export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsModalVisible, setError) => {
     const representative = ageUnderEi || watch('payment') === 'parent' ? objectCreating({ firstName: data.firstNameParent, secondName: data.secondNameParent, year: data.yearParent, phone: data.phoneParent }) : null;;
@@ -55,7 +56,8 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
         return;
     }
 
-    //HANDLER POST REQUEST
+    await studentPOST({ firstname: student.firstname, lastname: student.lastname }, PATH_HANDLER, TOKEN, AUTH);
+
     setIsSuccess(true);
     setIsModalVisible(true);
 
