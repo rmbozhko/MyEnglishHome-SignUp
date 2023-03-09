@@ -4,7 +4,6 @@ export const useBirthdate = (watch, now, setIsValideDate, setAgeUnderTw, setAgeU
     const [age, setAge] = useState(18);
     const dateOfBirthWatch = watch(['year', 'month', 'day']);
     useEffect(() => {
-        console.log('OH')
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         setIsValideDate(true);
         const day = watch('day');

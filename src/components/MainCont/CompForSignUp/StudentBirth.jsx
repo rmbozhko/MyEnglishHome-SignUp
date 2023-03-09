@@ -1,3 +1,5 @@
+import { memo } from "react"
+
 export const StudentBirth = ({ isValideDate, register, c, watch, errors, now }) => {
     return (
         <>
@@ -6,7 +8,7 @@ export const StudentBirth = ({ isValideDate, register, c, watch, errors, now }) 
                 <input {...register("day", { required: "Заповніть поле", pattern: { value: /^(0?[1-9]|[12]\d|3[01])$/, message: "Поле може містити тільки цифри від 1 до 31" }, })} className={`${c.birth} + ' ' + ${errors?.day || !isValideDate ? c.inputError : null}`} placeholder="День" name="day" maxLength="2" />
 
 
-                <select className={errors?.month || !isValideDate ? c.inputError : null} style={{ color: `${watch("month") === "" ? "rgba(0, 0, 0, 0.366)" : "rgba(0, 0, 0, 0.911)"}` }} {...register("month", { required: "Заповніть поле", })}>
+                <select style={{ color: `${watch("month") !== "" ? "rgba(0, 0, 0, 0.910)" : "rgba(0, 0, 0, 0.361)"}` }} className={errors?.month || !isValideDate ? c.inputError : null} {...register("month", { required: "Заповніть поле", })}>
                     <option value="" hidden>Місяць</option>
                     <option value="1">Січень</option>
                     <option value="2">Лютий</option>

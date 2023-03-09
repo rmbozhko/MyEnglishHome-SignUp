@@ -1,4 +1,3 @@
-import React from 'react';
 import { onChangeInputName } from '../../../function/nameInput';
 
 export const NameInput = ({ clearErrors, watch, setError, register, title, firstName, secondName, errors, req, c, }) => {
