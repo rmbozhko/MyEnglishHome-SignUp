@@ -1,7 +1,6 @@
-import { memo } from "react";
 import { inputChange, onfocusInput } from "../../../function/phoneInput";
 
-export const Phone = memo(({ ageUnderTw, register, c, errors }) => {
+export const Phone = ({ ageUnderTw, register, c, errors }) => {
     return (
         <>
             <span>Номер телефону студента{!ageUnderTw ? <span className={c.neces}>&#9913;</span> : null}</span>
@@ -11,4 +10,4 @@ export const Phone = memo(({ ageUnderTw, register, c, errors }) => {
             </div>
         </>
     )
-})
+}

@@ -1,11 +1,10 @@
-import { memo } from 'react';
 import { Button } from './Button';
 import { CheckboxInputs } from "./CheckboxInputs";
 import { ParentInfo } from './ParentInfo';
 import { Payment } from './Payment';
 import { StudentInfo } from './StudentInfo';
 
-export const SignUpForm = memo(({ clearErrors, setError, isValid, isValideDate, handleSubmit, onSubmit, c, register, watch, errors, now, ageUnderEi, ageUnderTw }) => {
+export const SignUpForm = ({ clearErrors, setError, isValid, isValideDate, handleSubmit, onSubmit, c, register, watch, errors, now, ageUnderEi, ageUnderTw }) => {
     return (
         <form onSubmit={isValid && !errors?.phone ? handleSubmit(onSubmit) : (e) => (e.preventDefault())}>
             <StudentInfo clearErrors={clearErrors} setError={setError} isValideDate={isValideDate} c={c} watch={watch} register={register} errors={errors} now={now} ageUnderTw={ageUnderTw} />
@@ -21,4 +20,3 @@ export const SignUpForm = memo(({ clearErrors, setError, isValid, isValideDate, 
         </form>
     )
 }
-)

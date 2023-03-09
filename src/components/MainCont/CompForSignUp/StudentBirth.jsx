@@ -1,5 +1,3 @@
-import { memo } from "react"
-
 export const StudentBirth = ({ isValideDate, register, c, watch, errors, now }) => {
     return (
         <>

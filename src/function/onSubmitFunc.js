@@ -55,8 +55,7 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
         setTimeout(() => setIsModalVisible(false), 6000);
         return;
     }
-    const responsehand = await studentPOST({ 'firstname': student.firstname, 'lastname': student.lastname }, PATH_HANDLER, TOKEN, AUTH);
-    console.log(responsehand)
+    await studentPOST({ 'firstname': student.firstname, 'lastname': student.lastname }, PATH_HANDLER, TOKEN, AUTH);
     setIsSuccess(true);
     setIsModalVisible(true);
 
