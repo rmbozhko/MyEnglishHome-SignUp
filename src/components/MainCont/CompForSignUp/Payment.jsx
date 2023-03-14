@@ -1,13 +1,10 @@
-import { useState } from "react";
-
-export const Payment = ({ c, errors, register }) => {
-    const [selected, setSelected] = useState('student');
+export const Payment = ({ selected, setSelected, isMobile, c, errors, register }) => {
     const handleChange = event => {
         setSelected(event.target.value);
     };
     return (
         <div className={c.signupform}>
-            <p>Хто буде здійснювати оплату?<span className={c.neces}>&#9913;</span>{(errors?.payment) && <i className="material-icons">&#xe002;</i>}</p>
+            {!isMobile ? <p>Хто буде здійснювати оплату?<span className={c.neces}>&#9913;</span>{(errors?.payment) && <i className="material-icons">&#xe002;</i>}</p> : <p className={c.fillform}>Хто буде здійснювати оплату?{(errors?.payment) && <i className="material-icons">&#xe002;</i>}</p>}
             <div className={c.radio}>
                 <input
                     className={c.customRadio}

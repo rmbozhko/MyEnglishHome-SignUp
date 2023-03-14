@@ -234,3 +234,487 @@ ul {
 .blur {
   filter: blur(10px);
 }
+
+@media all and (max-width: 1700px) {
+  .birth,
+  .tel,
+  .bitrhError {
+    width: 13%;
+  }
+
+  .name,
+  .tel,
+  .nameError {
+    width: 33%;
+  }
+
+  select {
+    width: 24%;
+  }
+
+  .check {
+    display: inline-flex;
+    font-size: 1.1rem;
+  }
+
+  .check i {
+    font-size: 1.2rem;
+  }
+
+  .customCheckbox + label {
+    display: inline-block;
+  }
+  .customCheckbox + label::before {
+    width: 0.7em;
+    height: 0.7em;
+  }
+}
+
+@media all and (max-width: 1700px) {
+  .check {
+    font-size: 0.9rem;
+  }
+
+  .check i {
+    font-size: 1rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  h3 {
+    font-size: 1.7rem;
+  }
+
+  .neces {
+    font-size: 1.4rem;
+  }
+
+  .necesCont {
+    font-size: 1.2rem;
+  }
+
+  .signupform {
+    margin: 0.5vw 0;
+    font-size: 1.3rem;
+  }
+
+  input,
+  select {
+    height: none;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin: 1% 2% 1% 0;
+  }
+
+  .strongUnderEighteen {
+    font-size: 1.3rem;
+  }
+
+  .regButton {
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 2rem;
+    border-radius: 24px;
+    border: 6px solid #83e07a;
+  }
+
+  .regButtonActive {
+    border: 6px solid #3ecf30;
+  }
+}
+
+@media all and (max-width: 1100px) {
+  .birth,
+  .bitrhError {
+    width: 10%;
+  }
+
+  .name,
+  .tel,
+  .nameError {
+    width: 26%;
+  }
+
+  select {
+    width: 20%;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  .neces {
+    font-size: 1.1rem;
+  }
+
+  .necesCont {
+    font-size: 1rem;
+  }
+
+  .signupform {
+    margin: 1vw 0;
+    font-size: 1.1rem;
+  }
+
+  input,
+  select {
+    font-size: 0.9rem;
+    padding: 5px;
+    margin: 2% 3% 2% 0;
+  }
+
+  .strongUnderEighteen {
+    font-size: 1.1rem;
+  }
+}
+
+@media all and (max-width: 1042px) {
+  .check {
+    font-size: 0.8rem;
+  }
+
+  .check i {
+    font-size: 0.9rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+}
+@media all and (max-width: 890px) {
+  .birth,
+  .bitrhError {
+    width: 15%;
+  }
+
+  .name,
+  .tel,
+  .nameError {
+    width: 34%;
+  }
+
+  select {
+    width: 23%;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .neces {
+    font-size: 1rem;
+  }
+
+  .signupform {
+    font-size: 1.2rem;
+  }
+
+  input,
+  select {
+    font-size: 1.1rem;
+    padding: 5px 15px;
+  }
+
+  .strongUnderEighteen {
+    font-size: 1.2rem;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .nothing {
+    height: 20vh;
+  }
+  span {
+    margin: auto;
+  }
+  .center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fillform {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 1.7rem;
+  }
+
+  .birth,
+  .tel,
+  .bitrhError,
+  .name,
+  .tel,
+  .nameError,
+  select {
+    width: 60%;
+  }
+
+  input,
+  select {
+    border: none;
+    border-radius: 12px;
+  }
+
+  .birth,
+  .tel,
+  select {
+    text-align: left;
+  }
+
+  .signupform {
+    border-bottom: none;
+  }
+
+  .buttonCont {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 100;
+    bottom: 0;
+    background-color: #ffffff;
+  }
+
+  .buttonCustomLeft,
+  .buttonCustomRight,
+  .buttonCustomRightNone,
+  .buttonOne,
+  .buttonOneNone {
+    width: 8rem;
+    height: 3rem;
+    background-color: #3ecf30;
+    border: none;
+    margin: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+  }
+
+  .buttonCustomRightNone,
+  .buttonOneNone {
+    background-color: #b2ecac;
+    cursor: unset;
+  }
+
+  .buttonOne,
+  .buttonOneNone {
+    border-radius: 12px;
+  }
+  .buttonCustomLeft {
+    border-radius: 50% 12px 12px 50%;
+  }
+
+  .buttonCustomRight,
+  .buttonCustomRightNone {
+    border-radius: 12px 50% 50% 12px;
+  }
+
+  .radio {
+    margin-top: 1rem;
+  }
+
+  .checkCenter {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+  }
+
+  .check {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  .check i {
+    font-size: 1.5rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .info {
+    font-size: 1.2rem;
+  }
+
+  .need {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1rem;
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 520px) {
+  .fillform {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .birth,
+  .tel,
+  .bitrhError,
+  .name,
+  .tel,
+  .nameError,
+  select {
+    width: 80%;
+  }
+
+  span {
+    font-size: 1.3rem;
+  }
+
+  .info {
+    font-size: 1.4rem;
+  }
+
+  .need {
+    font-size: 1.3rem;
+  }
+
+  .radio {
+    margin-top: 1rem;
+  }
+
+  .check {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+}
+
+@media all and (max-width: 430px) {
+  .birth,
+  .tel,
+  .bitrhError,
+  .name,
+  .tel,
+  .nameError,
+  select {
+    width: 90%;
+  }
+
+  span {
+    font-size: 1.3rem;
+  }
+
+  .info {
+    font-size: 1.2rem;
+  }
+
+  .need {
+    font-size: 1.1rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  .error i {
+    font-size: 1rem;
+  }
+}
+
+@media all and (max-width: 360px) {
+  select,
+  input {
+    height: 40px;
+  }
+
+  .info {
+    font-size: 1.1rem;
+    margin-left: 10%;
+  }
+
+  .buttonCustomLeft,
+  .buttonCustomRight,
+  .buttonCustomRightNone,
+  .buttonOne,
+  .buttonOneNone {
+    width: 6rem;
+    height: 2.7rem;
+    margin: 1.3rem;
+    font-size: 1.2rem;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+
+  .fillform {
+    font-size: 1.1rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+}
+
+@media all and (max-width: 310px) {
+  .info {
+    font-size: 1rem;
+  }
+  .need {
+    font-size: 1rem;
+  }
+}
+
+@media all and (max-width: 240px) {
+  span {
+    font-size: 1rem;
+  }
+
+  .fillform {
+    font-size: 1rem;
+  }
+
+  .customCheckbox + label::before {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  .nothing {
+    height: 30vh;
+  }
+
+  .buttonCustomLeft,
+  .buttonCustomRight,
+  .buttonCustomRightNone,
+  .buttonOne,
+  .buttonOneNone {
+    width: 5rem;
+    height: 2.2rem;
+    margin: 0.3rem;
+    font-size: 1rem;
+  }
+}

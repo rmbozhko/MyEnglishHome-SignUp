@@ -5,3 +5,26 @@
   border-radius: 24px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.432);
 }
+
+@media all and (max-width: 1400px) {
+  .App {
+    width: 65.4%;
+  }
+}
+
+@media all and (max-width: 890px) {
+  .App {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .App {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+}

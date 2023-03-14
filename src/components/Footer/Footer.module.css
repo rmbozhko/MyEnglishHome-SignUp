@@ -9,3 +9,17 @@
   padding: 1%;
   color: #3ecf30;
 }
+
+@media all and (max-width: 1100px) {
+  .footer {
+    font-size: 2.2rem;
+    padding: 2%;
+  }
+}
+
+@media all and (max-width: 890px) {
+  .footer {
+    font-size: 1.9rem;
+    padding: 3%;
+  }
+}

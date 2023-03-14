@@ -9,7 +9,7 @@ const AUTH = process.env.REACT_APP_AUTH;
 const PATH = process.env.REACT_APP_API_PATH;
 const PATH_HANDLER = process.env.REACT_APP_API_PATH_HANDLER;
 
-export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsModalVisible, setError) => {
+export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsModalVisible, setError, setPage) => {
     const representative = ageUnderEi || watch('payment') === 'parent' ? objectCreating({ firstName: data.firstNameParent, secondName: data.secondNameParent, year: data.yearParent, phone: data.phoneParent }) : null;;
     const student = objectCreating({ firstName: data.firstName, secondName: data.secondName, year: data.year, month: data.month, day: data.day, phone: data.phone });
     if (representative) {
@@ -48,6 +48,7 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
     } else if (response.status === 200) {
         setIsSuccess(false);
         setError('phone', { type: 'custom', message: 'Даний номер телефону вже зареєстровано. Вкажіть, будь ласка, інший' })
+        setPage(1);
         return;
     } else {
         setIsSuccess(false);
