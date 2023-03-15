@@ -23,7 +23,7 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
             } else {
                 setIsSuccess(false);
                 setIsModalVisible(true);
-                setTimeout(() => setIsModalVisible(false), 6000);
+                setTimeout(() => setIsModalVisible(false), 10000);
                 return;
             }
         } else if (response.status === 200) {
@@ -31,7 +31,7 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
         } else {
             setIsSuccess(false);
             setIsModalVisible(true);
-            setTimeout(() => setIsModalVisible(false), 6000);
+            setTimeout(() => setIsModalVisible(false), 10000);
             return;
         }
     }
@@ -42,7 +42,7 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
         if (responsePOST.status !== 200) {
             setIsSuccess(false);
             setIsModalVisible(true);
-            setTimeout(() => setIsModalVisible(false), 6000);
+            setTimeout(() => setIsModalVisible(false), 10000);
             return;
         }
     } else if (response.status === 200) {
@@ -53,13 +53,14 @@ export const onSubmitFunc = async (data, ageUnderEi, watch, setIsSuccess, setIsM
     } else {
         setIsSuccess(false);
         setIsModalVisible(true);
-        setTimeout(() => setIsModalVisible(false), 6000);
+        setTimeout(() => setIsModalVisible(false), 10000);
         return;
     }
     await studentPOST({ 'firstname': student.firstname, 'lastname': student.lastname }, PATH_HANDLER, TOKEN, AUTH);
     setIsSuccess(true);
     setIsModalVisible(true);
-
-    // REDIRECT
+    setTimeout(() => {
+        window.location.href = 'https://www.facebook.com/MyEnglishHomeBoryspil';
+    }, 5000);
     return;
 };

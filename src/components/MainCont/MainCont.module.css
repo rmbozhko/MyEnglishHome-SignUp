@@ -168,7 +168,7 @@ li {
 }
 
 ul {
-  list-style-type: circle;
+  list-style-type: "- ";
 }
 
 .radio {
@@ -427,6 +427,10 @@ ul {
 }
 
 @media all and (max-width: 768px) {
+  .blur {
+    filter: none;
+  }
+
   .nothing {
     height: 20vh;
   }
@@ -607,11 +611,16 @@ ul {
   .tel,
   .nameError,
   select {
-    width: 90%;
+    width: 78%;
   }
 
+  input,
+  select {
+    margin-top: 1rem;
+  }
   span {
     font-size: 1.3rem;
+    letter-spacing: 1.5px;
   }
 
   .info {
@@ -659,7 +668,8 @@ ul {
   }
 
   span {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
   }
 
   .fillform {
@@ -683,11 +693,15 @@ ul {
   .need {
     font-size: 1rem;
   }
+
+  span {
+    font-size: 1.1rem;
+  }
 }
 
 @media all and (max-width: 240px) {
   span {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .fillform {

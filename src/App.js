@@ -12,7 +12,7 @@ function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <div className="App">
-      {isModalVisible ? <Modal isSuccess={isSuccess} setIsModalVisible={setIsModalVisible} /> : null}
+      {isModalVisible && <Modal isSuccess={isSuccess} />}
       <Header isMobile={isMobile} />
       <MainCont isMobile={isMobile} setIsSuccess={setIsSuccess} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
       {!isMobile && <Footer />}

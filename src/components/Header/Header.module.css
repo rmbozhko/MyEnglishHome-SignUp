@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.logoA {
+  width: 100%;
+  text-align: center;
+}
+
 .logo {
   width: 70%;
 }
@@ -31,10 +36,12 @@
     font-size: 40px;
     color: #ffffff;
   }
-
-  .logo {
+  .logoA {
     width: 20%;
     margin-left: 5%;
+  }
+  .logo {
+    width: 100%;
   }
 }
 

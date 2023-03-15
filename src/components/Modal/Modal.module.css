@@ -12,6 +12,24 @@
   justify-content: center;
   text-align: center;
   font-family: "Blogger Sans Bold";
+  opacity: 1;
+  animation-name: powerpoint;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+}
+
+@keyframes powerpoint {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .success,
@@ -19,13 +37,8 @@
   color: #3ecf30;
   text-shadow: #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px,
     #185912 0px 0px 5px, #185912 0px 0px 5px, #185912 0px 0px 5px;
-}
-
-.fail,
-.trouble {
-  color: #e5dacb;
-  text-shadow: #c22222 0px 0px 5px, #c22222 0px 0px 5px, #c22222 0px 0px 5px,
-    #c22222 0px 0px 5px, #c22222 0px 0px 5px, #c22222 0px 0px 5px;
+  font-weight: 900;
+  font-family: "Blogger Sans Bold";
 }
 
 .success,
