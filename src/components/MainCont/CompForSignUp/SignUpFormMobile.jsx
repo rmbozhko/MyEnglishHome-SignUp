@@ -23,7 +23,7 @@ export const SignUpFormMobile = ({ checkerOne, checkerTwo, setCheckerOne, setChe
                 }
                 return;
             case 2:
-                if (watch('payment') === 'student') {
+                if (selected === 'student') {
                     return () => setPage(3);
                 }
                 return () => setPage(4);

@@ -7,7 +7,7 @@ export const Modal = ({ isSuccess }) => {
         <div className={c.modal}>
             <div>
                 {isSuccess ? <p className={c.congrats}>Вітаємо!</p> : <p className={c.congrats}>От халепа!</p>}
-                {isSuccess ? <p className={c.success}>ви успішно зареєстровані</p> : <p className={c.success}>сталася помилка<br></br>спробуйте пізніше</p>}
+                {isSuccess ? <p className={c.success}>Ви успішно <br></br> зареєструвалися</p> : <p className={c.success}>сталася помилка<br></br>спробуйте пізніше</p>}
                 <img className={isSuccess ? c.image : c.imageTrouble} src={isSuccess ? congrats : trouble} alt="congrats"></img>
             </div>
         </div>
