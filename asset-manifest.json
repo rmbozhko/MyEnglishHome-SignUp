@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/MyEnglishHome-SignUp/static/css/main.cc18a6a4.css",
+    "main.js": "/MyEnglishHome-SignUp/static/js/main.5cb372f5.js",
+    "static/media/congrats.png": "/MyEnglishHome-SignUp/static/media/congrats.38a26313feec34cf9a74.png",
+    "static/media/Blogger_Sans_Bold.otf": "/MyEnglishHome-SignUp/static/media/Blogger_Sans_Bold.991335f1a7842a014305.otf",
+    "static/media/Blogger_Sans.otf": "/MyEnglishHome-SignUp/static/media/Blogger_Sans.5fa2f7b82f0db86fbaa9.otf",
+    "static/media/trouble.png": "/MyEnglishHome-SignUp/static/media/trouble.5a0581f4d8a1534edf1d.png",
+    "static/media/Aqum.otf": "/MyEnglishHome-SignUp/static/media/Aqum.6fb0d881971006b429a8.otf",
+    "static/media/mobilelogo.png": "/MyEnglishHome-SignUp/static/media/mobilelogo.e6c9b0adb6df6fff9958.png",
+    "index.html": "/MyEnglishHome-SignUp/index.html",
+    "main.cc18a6a4.css.map": "/MyEnglishHome-SignUp/static/css/main.cc18a6a4.css.map",
+    "main.5cb372f5.js.map": "/MyEnglishHome-SignUp/static/js/main.5cb372f5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc18a6a4.css",
+    "static/js/main.5cb372f5.js"
+  ]
+}
